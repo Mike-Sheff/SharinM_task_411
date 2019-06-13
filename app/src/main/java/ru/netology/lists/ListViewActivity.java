@@ -35,17 +35,19 @@ public class ListViewActivity extends AppCompatActivity {
 
     @NonNull
     private BaseAdapter createAdapter(List<Map<String, String>> values) {
-        return new SimpleAdapter(this, values, android.R.layout.simple_list_item_1, new String[]{"bottom","top"}, new int[] {R.id.textView1, R.id.textView2});
+        SimpleAdapter simpleAdapter = new SimpleAdapter(this, values, R.layout.activity_separate, new String[]{"bottom", "top"}, new int[]{R.id.textView1, R.id.textView2});
+        return simpleAdapter;
     }
 
     @NonNull
     private List<Map<String, String>> prepareContent() {
         content = new ArrayList<>();
 
-        Map<String, String> map = new HashMap<>();
-
         String[] arrayContent = getString(R.string.large_text).split("\n\n");
         for(int i=0 ; i < arrayContent.length; i++) {
+
+            Map<String, String> map = new HashMap<>();
+
             map.put("bottom", arrayContent[i]);
             map.put("top", String.valueOf(arrayContent[i].length()));
 
